@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>countryhack.xyz</title>
+  <style>
+    :root {
+      --bg-dark: #0c0c0c;
+      --bg-dark-2: #131313;
+      --border: #222222;
+      --text-primary: #f3f5f9;
+      --text-muted: #9a9a9a;
+      --accent-blue: #6690ff;
+      --btn-start: #7fa2ff;
+      --btn-end: #6690ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg-dark);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 40px;
+      background: linear-gradient(180deg, var(--bg-dark-2), var(--bg-dark));
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+    }
+
+    .logo .highlight {
+      color: var(--accent-blue);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary);
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--btn-start), var(--btn-end));
+      color: #06141f;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 22px;
+      cursor: pointer;
+    }
+
+    main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: calc(100vh - 74px);
+    }
+
+    .hero-text {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-shadow:
+        0 0 20px rgba(102, 144, 255, 0.8),
+        0 0 45px rgba(102, 144, 255, 0.5),
+        0 0 80px rgba(102, 144, 255, 0.3);
+    }
+
+    /* Entry overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 12, 12, 0.85);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      cursor: pointer;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .overlay-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    .overlay-text {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+      text-transform: lowercase;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.06); }
+    }
+
+    /* Page content pop-in */
+    .page-content {
+      transform: scale(0.85);
+      opacity: 0;
+    }
+
+    .page-content.pop {
+      animation: popIn 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      60% {
+        transform: scale(1.04);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay" id="overlay">
+    <div class="overlay-content">
+      <div class="overlay-text">Click to enter</div>
+    </div>
+  </div>
+
+  <div class="page-content" id="pageContent">
+    <nav>
+      <div class="logo">[<span class="highlight">countryhack</span>.xyz]</div>
+      <div class="nav-right">
+        <a class="cta-button" href="https://youtu.be/dQw4w9WgXcQ?list=RDdQw4w9WgXcQ" target="_blank" rel="noopener noreferrer">GET ACCESS</a>
+      </div>
+    </nav>
+    <main>
+      <div class="hero-text">countryhack.xyz</div>
+    </main>
+  </div>
+
+  <script>
+    const overlay = document.getElementById('overlay');
+    const pageContent = document.getElementById('pageContent');
+
+    overlay.addEventListener('click', () => {
+      overlay.classList.add('hidden');
+      pageContent.classList.add('pop');
+    });
+  </script>
+</body>
+</html>
